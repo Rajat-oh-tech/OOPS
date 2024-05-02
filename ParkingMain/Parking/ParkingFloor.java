@@ -1,14 +1,11 @@
 
 package ParkingMain.Parking;
 
-import java.util.HashMap;
-
 import ParkingMain.Vehicle.FuelType;
 import ParkingMain.Vehicle.Vehicle;
 import ParkingMain.Vehicle.VehicleType;
-
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.HashMap;
 
 
 public class ParkingFloor {

@@ -11,42 +11,41 @@ public class Admin extends BaseUser {
         this.parkingLotInstance = ParkingLot.getInstance();
     }
 
-    public void addParkingFloor(ParkingFloor parkingFloor) {   
-        this.parkingLotInstance.getListOfParkingFloors().add(parkingFloor);
+    public boolean addParkingFloor(int floorID) {
+        // ParkingFloor floor =  this.parkingLotInstance.getListOfParkingFloors().get(floorID);
+        // if(floor != null) {
+        //     return false;
+        // }; 
+        ParkingFloor newFloor = new ParkingFloor(floorID);   
+        this.parkingLotInstance.getListOfParkingFloors().add(newFloor);
+        return true;
     }
 
     @SuppressWarnings("unlikely-arg-type")
     public boolean addParkingSpot(int floorID,ParkingSpot parkingSpot) {
         if(parkingSpot == null) return false; // Add a null check 
 
-        if(!this.parkingLotInstance.getListOfParkingFloors().contains(floorID)){
-            return false;
-        }
-        
+        // ParkingFloor floor =  this.parkingLotInstance.getListOfParkingFloors().get(floorID);
+        // if(floor == null) {
+        //     return false;
+        // };
         this.parkingLotInstance.getListOfParkingFloors().get(floorID).getListOfParkingSpots().get(parkingSpot.getParkingSpotType()).add(parkingSpot);   
         return true;
     }
 
     @SuppressWarnings("unlikely-arg-type")
-    public boolean addEntryPoint(int floorID,EntryPoint entryPoint) {
+    public boolean addEntryPoint(EntryPoint entryPoint) {
         if(entryPoint == null) return false; // Add a null check 
 
-        if(!this.parkingLotInstance.getListOfParkingFloors().contains(floorID)){
-            return false;
-        }
         
         this.parkingLotInstance.getListOfEntryPoints().add(entryPoint);  
         return true;
     }
 
     @SuppressWarnings("unlikely-arg-type")
-    public boolean addExitPoint(int floorID,ExitPoint exitPoint) {
+    public boolean addExitPoint(ExitPoint exitPoint) {
         if(exitPoint == null) return false; // Add a null check 
 
-        if(!this.parkingLotInstance.getListOfParkingFloors().contains(floorID)){
-            return false;
-        }
-        
         this.parkingLotInstance.getListOfExitPoints().add(exitPoint);  
         return true;
     }

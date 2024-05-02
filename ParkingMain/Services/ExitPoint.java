@@ -1,7 +1,10 @@
 package ParkingMain.Services;
 import ParkingMain.Parking.*;
 public class ExitPoint {
-    
+    private String exitPointID;
+    public ExitPoint(String exitPointID){
+        this.exitPointID=exitPointID;
+    }
     public int checkout(Ticket ticket){
         int floorId = ticket.getFloorID();
         String spotId = ticket.getSpotID();
@@ -27,7 +30,7 @@ public class ExitPoint {
         else{
             amount+=hours*ParkingLot.getInstance().getParkingRate().getRest();
         }
-        
+        ticket.setAmount(amount);
         return amount;
     }
 }

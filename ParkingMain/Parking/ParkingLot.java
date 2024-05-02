@@ -1,10 +1,6 @@
 
 package ParkingMain.Parking;
 import java.util.ArrayList;
-import java.util.Collection;
-
-import javax.print.attribute.standard.PageRanges;
-
 import ParkingMain.Services.*;
 import ParkingMain.Vehicle.FuelType;
 import ParkingMain.Vehicle.VehicleType;

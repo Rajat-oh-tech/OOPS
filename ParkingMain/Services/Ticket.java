@@ -51,4 +51,7 @@ public class Ticket {
     public void setIsPaid(boolean isPaid){
         this.isPaid=isPaid;
     }
+    public void setAmount(int amount){
+        this.amount=amount;
+    }
 }
