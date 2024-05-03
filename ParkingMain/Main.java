@@ -37,6 +37,8 @@ public class Main {
 
         // bike entry
         Ticket T1=entry.generateTicketOnEntry(car1);
-        System.out.println("Ticket" + T1);
+        // System.out.println("Ticket" + T1);
+        int amount=exit.checkout(T1);
+        
     }
 }

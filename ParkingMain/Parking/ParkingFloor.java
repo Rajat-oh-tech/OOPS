@@ -4,6 +4,7 @@ package ParkingMain.Parking;
 import ParkingMain.Vehicle.FuelType;
 import ParkingMain.Vehicle.Vehicle;
 import ParkingMain.Vehicle.VehicleType;
+import ParkingMain.Services.DisplayBoard;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -11,6 +12,7 @@ import java.util.HashMap;
 public class ParkingFloor {
     private int floorID;
     private HashMap<ParkingSpotType, ArrayList<ParkingSpot>> parkingSpots;
+    private DisplayBoard displayBoard;
 
     public ParkingFloor(int floorID) {
         this.floorID = floorID;
@@ -20,6 +22,7 @@ public class ParkingFloor {
         parkingSpots.put(ParkingSpotType.LARGE, new ArrayList<ParkingSpot>());
         parkingSpots.put(ParkingSpotType.ELECTRIC, new ArrayList<ParkingSpot>());
         parkingSpots.put(ParkingSpotType.MOTORBIKE, new ArrayList<ParkingSpot>());
+        this.displayBoard = new DisplayBoard();
     }
     public int getFloorID() {
         return floorID;
@@ -48,20 +51,10 @@ public class ParkingFloor {
                 }
                 return ParkingSpotType.COMPACT;
             case MOTORBIKE:
-                if (fuelType == FuelType.ELECTRIC) {
-                    return ParkingSpotType.ELECTRIC;   
-                }
                 return ParkingSpotType.MOTORBIKE;
             case TRUCK:
-                if (fuelType == FuelType.ELECTRIC) {
-                    return ParkingSpotType.ELECTRIC;   
-                }
                 return ParkingSpotType.LARGE;
-
             case VAN:
-                if (fuelType == FuelType.ELECTRIC) {
-                    return ParkingSpotType.ELECTRIC;   
-                }
                 return ParkingSpotType.LARGE;
             default:
                 return ParkingSpotType.LARGE;
@@ -85,5 +78,18 @@ public class ParkingFloor {
             }
         }
         return null;
+    }
+
+    public void showDisplayBoard(){
+        for(ParkingSpotType parkingSpotType: this.parkingSpots.keySet()){
+            ArrayList<ParkingSpot> parkingSpots = this.parkingSpots.get(parkingSpotType);
+            int totalSpots=0;
+            for(ParkingSpot parkingSpot: parkingSpots){
+                if(parkingSpot.isSpotAvailable()){
+                   totalSpots++; 
+                }
+            }
+            this.displayBoard.displayEmptySpots(parkingSpotType, totalSpots);
+        }
     }
 }

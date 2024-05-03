@@ -17,6 +17,7 @@ public class ParkingLot {
         this.entryPoints = new ArrayList<EntryPoint>();
         this.exitPoints = new ArrayList<ExitPoint>();
         setParkingRate(4,3,2);
+        
     }
 
     public static ParkingLot getInstance() {
